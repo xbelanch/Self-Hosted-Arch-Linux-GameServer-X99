@@ -2,17 +2,36 @@
 
 ## Rust Legacy
 
+Setup hardrive with raw format and 8G of free space.
+
+``` shell
+qemu-img create -f raw rustserver.img 8G
+```
+
+Alternative you can create qcow2 format but you can't mount as iso later:
+
+``` shell
+qemu-img create -f qcow2 rustserver-reactos.qcow2 8G
+```
+
+Install ReactOS:
+
+``` shell
+qemu-system-i386 -cpu host -smp 2 -enable-kvm -m 4G -drive if=ide,index=0,media=disk,file=rustserver-reactos.qcow2 -drive if=ide,index=2,media=cdrom,file=ReactOS-0.4.14-release-14-g210d602.iso -boot order=d -serial file:ReactOS.log -name rustserver -display vnc=0.0.0.0:0 -nic bridge,br=br0 -usbdevice tablet &
+```
+
+Once ReactOS is installed, you need to install **Monot Net Development Framework** and **DirectX End User Runtimes** from the **ReactOS Package Manager** (located at Desktop).
+
+
 https://www.cyberciti.biz/faq/linux-kvm-vnc-for-guest-machine/
 
 https://wiki.gentoo.org/wiki/QEMU/Options#Display_options
 
-qemu-system-x86_64 -cpu host -enable-kvm -m 2048 -hda reactos.raw -boot c -k en-us -name RustLegacyServer -vga qxl -display vnc=0.0.0.0:1
+és necessary?
 
-
-With brigdge:
-
-és necessary? No, no és necessari
+``` shell
 sudo pacman -S libvirt
+```
 
 Això ha funcionat, llegint la documentació següent:
 
@@ -109,8 +128,41 @@ Device          Boot Start      End  Sectors Size Id Type
 rustserver.img1 *     2048 12582863 12580816   6G  b W95 FAT32
 ```
 
+### Issues using ReactOS
 
-### Issues
-
-* Hi ha un moment que el cursor del vnc es queda congelat al centre de la pantalla.
+* It last 10 minutes until rust server starts!
+* Hi ha un moment que el cursor del vnc es queda congelat al centre de la pantalla quan el servidor de
 * How to encrypt qemu vnc server? (unencrypted connection)
+
+### Windows 7/10 as server
+
+* [Introducing Tiny 10!](https://www.reddit.com/r/windows/comments/ml538t/introducing_tiny_10/)
+* [Tiny 7 Windows](https://archive.org/details/Tiny7)
+* [Windows10Debloater](https://github.com/Sycnex/Windows10Debloater)
+
+``` shell
+qemu-img create -f qcow2 rustserver-tiny10.qcow2 8G
+```
+
+``` shell
+qemu-system-x86_64 -cpu host -smp 2 -enable-kvm -m 4G -drive if=ide,index=0,media=disk,file=rustserver-tiny10.qcow2 -drive if=ide,index=2,media=cdrom,file=Tiny10.iso -boot order=d -serial file:Tiny10.log -name rustserver -display vnc=0.0.0.0:1 -nic bridge,br=br0 -usbdevice tablet &
+```
+
+Per muntar i desmuntar: [How to mount a qcow2 disk image](https://gist.github.com/shamil/62935d9b456a6f9877b5)
+
+``` shell
+sudo modprobe nbd max_part=8
+sudo qemu-nbd --connect=/dev/nbd0 rustserver-tiny10.qcow2
+sudo pacman -Ss ntfs-3g
+sudo mount /dev/nbd0p2 mnt/
+sudo umount mnt/
+sudo qemu-nbd --disconnect /dev/nbd0
+```
+
+``` shell
+qemu-system-x86_64 -cpu host -smp 4 -enable-kvm -m 6G -drive file=rustserver-win7.img,format=raw -boot d -name rustserver -display vnc=0.0.0.0:1 -nic bridge,br=br0 -usbdevice tablet -cdrom win7.iso
+```
+
+## Infiniminer
+
+http://thesiteformerlyknownas.zachtronicsindustries.com/infiniminer/
