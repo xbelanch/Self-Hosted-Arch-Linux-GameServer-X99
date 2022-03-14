@@ -2,10 +2,11 @@
 
 ## Server Specs
 
-Barcelona, Europe
-Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz - 2t/12c - 3.1GHz
-32GB DDR4 2400 MHz
-1x512gb NVME
+* Barcelona, Europe
+* Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz - 2t/12c - 3.1GHz
+* 32GB DDR4 2400 MHz
+* 1x512gb NVME
+
 This machine hosts:
 
 * Rust Legacy
@@ -17,3 +18,21 @@ This machine hosts:
 ## Installing Arch Linux
 
 ### Configure SSH
+
+
+### Qemu
+
+* [VGA and other display devices in qemu](https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/)
+* [Host mouse pointer not aligned with guest mouse pointer in Qemu VNC](https://unix.stackexchange.com/questions/555082/host-mouse-pointer-not-aligned-with-guest-mouse-pointer-in-qemu-vnc)
+
+### ReactOS
+
+* [ReactOS on QEMU](https://reactos.org/wiki/QEMU)
+
+### Which Windows?
+
+* [Windows 10 or Windows Server for Game Servers](https://www.reddit.com/r/servers/comments/kl0ze4/windows_10_or_windows_server_for_game_servers/)
+* [What is the lightest version of Windows 10? ](https://techtrix.co/what-is-the-lightest-version-of-windows-10/)
+* [Windows LTSC | The Best Version of Windows 10](https://www.youtube.com/watch?v=8dyhoh7u8JA)
+* [Introducing Tiny 10!](https://www.reddit.com/r/windows/comments/ml538t/introducing_tiny_10/)
+* [Windows10Debloater](https://github.com/Sycnex/Windows10Debloater): Script/Utility/Application to debloat Windows 10, to remove Windows pre-installed unnecessary applications, stop some telemetry functions, stop Cortana from being used as your Search Index, disable unnecessary scheduled tasks, and more...

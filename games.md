@@ -2,6 +2,9 @@
 
 ## Rust Legacy
 
+https://github.com/d3adwolf/rustlegacy
+Omg! https://www.legionrust.com/
+
 Setup hardrive with raw format and 8G of free space.
 
 ``` shell
@@ -150,6 +153,10 @@ qemu-system-x86_64 -cpu host -smp 2 -enable-kvm -m 4G -drive if=ide,index=0,medi
 
 Per muntar i desmuntar: [How to mount a qcow2 disk image](https://gist.github.com/shamil/62935d9b456a6f9877b5)
 
+[How To Mount A Windows NTFS Disk In Linux](https://www.rootusers.com/how-to-mount-a-windows-ntfs-disk-in-linux/)
+[Can't Mount NTFS drive "The disk contains an unclean file system"](https://askubuntu.com/questions/462381/cant-mount-ntfs-drive-the-disk-contains-an-unclean-file-system)
+[https://isofiles.bd581e55.workers.dev/](https://isofiles.bd581e55.workers.dev/): to obtain LTSC Windows 10
+
 ``` shell
 sudo modprobe nbd max_part=8
 sudo qemu-nbd --connect=/dev/nbd0 rustserver-tiny10.qcow2
@@ -162,6 +169,47 @@ sudo qemu-nbd --disconnect /dev/nbd0
 ``` shell
 qemu-system-x86_64 -cpu host -smp 4 -enable-kvm -m 6G -drive file=rustserver-win7.img,format=raw -boot d -name rustserver -display vnc=0.0.0.0:1 -nic bridge,br=br0 -usbdevice tablet -cdrom win7.iso
 ```
+
+Ara mateix, el que ha donat millors resultats (Tiny7):
+
+``` shell
+qemu-img create -f qcow2 rustserver-tiny7.qcow2 8G
+```
+Instal·lem:
+
+``` shell
+qemu-system-x86_64 -cpu host -smp 2 -enable-kvm -m 2G -drive if=ide,index=0,media=disk,file=rustserver-tiny7.qcow2 -drive if=ide,index=2,media=cdrom,file=files/Tiny7.iso -boot order=d -name rustserver -display vnc=0.0.0.0:0 -usbdevice tablet -device VGA,vgamem_mb=256 -nic bridge,br=br0 &
+```
+
+Un cop instal·lat, ja podem executar:
+
+``` shell
+qemu-system-x86_64 -cpu host -smp 2 -enable-kvm -m 2G -drive if=ide,index=0,media=disk,file=rustserver-tiny7.qcow2 -boot order=c -name rustserver -display vnc=0.0.0.0:0 -usbdevice tablet -device VGA,vgamem_mb=256 -nic bridge,br=br0 &
+```
+
+Per executar Rust només et caldrà el runtime de Mono:
+
+``` shell
+wget -c https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.107-gtksharp-2.12.45-win32-0.msi
+```
+
+Per muntar i desmuntar el disc (i fer canvis):
+
+``` shell
+sudo qemu-nbd --connect=/dev/nbd0 rustserver-tiny7.qcow2
+sudo fdisk -l /dev/nbd0
+sudo mount /dev/nbd0p2 mnt/
+```
+
+i fiquem a dins el que necessitem...
+
+per desmuntar:
+
+``` shell
+sudo umount mnt
+sudo qemu-nbd --disconnect /dev/nbd0
+```
+
 
 ## Infiniminer
 
