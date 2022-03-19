@@ -9,7 +9,8 @@
 
 This machine hosts:
 
-* Rust Legacy
+* [Rust Legacy](https://d3adwolf.github.io/rustlegacy/index-english.html)
+* [Project Zomboid]
 
 ## X99 Chinese Motherboards
 
@@ -24,6 +25,30 @@ This machine hosts:
 
 * [VGA and other display devices in qemu](https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/)
 * [Host mouse pointer not aligned with guest mouse pointer in Qemu VNC](https://unix.stackexchange.com/questions/555082/host-mouse-pointer-not-aligned-with-guest-mouse-pointer-in-qemu-vnc)
+
+####  Docker breaks existing bridge I use for KVM/QEMU
+
+When I start the Docker service, my VM no longer has network connectivity ([https://bbs.archlinux.org/viewtopic.php?id=233727](https://bbs.archlinux.org/viewtopic.php?id=233727)).
+
+1. Cal activar el service de iptables:  `sudo systemctl start iptables`.
+2. Cal editar el docker.service: `EDITOR=vim sudo -E systemctl edit docker.service`
+3. Incloure aquestes dues línies:
+
+  ``` shell
+  #[Service]
+  ExecStartPre=/usr/bin/iptables -D FORWARD -p all -i br0 -j ACCEPT
+  ExecStartPre=/usr/bin/iptables -A FORWARD -p all -i br0 -j ACCEPT
+  ```
+
+4. Restart docker:
+
+  ``` shell
+  sudo systemctl daemon-reload
+  sudo systemctl stop docker
+  sudo systemctl start docker
+  ```
+
+And it works!
 
 ### ReactOS
 
