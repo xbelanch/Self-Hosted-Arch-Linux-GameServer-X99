@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: a3co10escape
+    container_name: a3co10escape00
     environment:
       - GAMESERVER=arma3server
       - LGSM_GITHUBUSER=GameServerManagers
@@ -34,14 +34,11 @@ services:
       - ./log:/home/linuxgsm/log
       - ./config-lgsm:/home/linuxgsm/lgsm/config-lgsm
     ports:
-      - "23120:2302/tcp"
-      - "23120:2302/udp"
-      - "23121:2303/tcp"
-      - "23121:2303/udp"
-      - "23122:2304/tcp"
-      - "23122:2304/udp"
-      - "23123:2306/tcp"
-      - "23123:2306/udp"
+      - "2302:2302/udp"
+      - "2303:2303/udp"
+      - "2304:2304/udp"
+      - "2305:2305/udp"
+      - "2306:2306/udp"
     restart: unless-stopped
 ```
 
@@ -50,7 +47,11 @@ docker-compose up -d
 cd config-lgsm/arma3server/
 cat _default.cfg >> arma3server.cfg
 ```
-Cal incloure en arma3server.cfg l'id and password steam user
+Cal incloure en arma3server.cfg l'id and password steam user i el port que es farà servir.
+
+Sobre el port: https://opendayz.net/threads/running-multiple-servers-on-a-single-machine-including-firewall-setup.22337/
+
+I recorda que s'han de fer port forwarding al router (únicament UDP).
 
 Instal·lem finalment els fitxers d'arma3
 
@@ -58,8 +59,29 @@ Instal·lem finalment els fitxers d'arma3
 docker exec -it a3co10escape ./arma3server install
 ```
 
-Entrem al container
+Per iniciar el server:
+
+```shell
+docker exec -it a3co10escape00 ./arma3server start
+```
+
+Per veure els detalls:
+
+```shell
+docker exec -it a3co10escape00 ./arma3server details
+```
+
+Per veure la consola (real time)
+
+```shell
+docker exec -it a3co10escape00 ./arma3server console
+```
+
+```
+Si volem entrar al container
 
 ``` shell
 docker exec -it a3co10escape /bin/bash
 ```
+
+Cal editar els fitxers de configuració, però això ja cal continuar amb el que demana els tutorials de Bohemia :)
