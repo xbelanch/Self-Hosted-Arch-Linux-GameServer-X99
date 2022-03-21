@@ -14,7 +14,9 @@ This machine hosts:
 
 ## X99 Chinese Motherboards
 
+## Bios TCO Intel watchdog [Need to be tested]
 
+http://www.madore.org/~david/linux/iTCO-wdt-test.html
 
 ## Installing Arch Linux
 
