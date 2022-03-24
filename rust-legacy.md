@@ -209,3 +209,18 @@ per desmuntar:
 sudo umount mnt
 sudo qemu-nbd --disconnect /dev/nbd0
 ```
+
+## Need to test if this works...
+
+[How To Connect QEMU Host-Guest Networks Made Easy ](https://www.ubuntubuzz.com/2021/12/how-to-connect-qemu-host-guest-networks-made-easy.html)
+
+Dit d'una altra manera, és possible establir un redireccionament udp d'un port a un altre sense fer servir el bridge?
+
+O un altre opció: [quickhowto: qemu networking using vde, tun/tap, and bridge](https://selamatpagicikgu.wordpress.com/2011/06/08/quickhowto-qemu-networking-using-vde-tuntap-and-bridge/)
+
+
+## References
+
+- [QEMU Documentation/Networking](https://wiki.qemu.org/Documentation/Networking#How_to_create_a_virtual_network_device.3F)
+- [Network bridge](https://wiki.archlinux.org/title/Network_bridge#No_networking_on_hosted_servers_after_bridge_configuration)
+- [Network stop working after adding bridge interface](https://serverfault.com/questions/868189/network-stop-working-after-adding-bridge-interface)
