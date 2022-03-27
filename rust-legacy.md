@@ -218,6 +218,15 @@ Dit d'una altra manera, és possible establir un redireccionament udp d'un port 
 
 O un altre opció: [quickhowto: qemu networking using vde, tun/tap, and bridge](https://selamatpagicikgu.wordpress.com/2011/06/08/quickhowto-qemu-networking-using-vde-tuntap-and-bridge/)
 
+## Console commands
+
+https://rust.fandom.com/wiki/Console_(Legacy)
+
+## Rust Legacy Buster
+
+- [RustBuster files (client/server)](https://fougerite.com/resources/categories/rustbuster.8/)
+- [Fougerite Official](https://fougerite.com/resources/categories/fougerite.3/)
+- [Full Server Fougerite1.76B + RustBuster2.09 (531.9 Mb)](https://fougerite.com/resources/categories/rust-files.7/)
 
 ## References
 

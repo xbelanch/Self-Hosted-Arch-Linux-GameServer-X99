@@ -30,6 +30,11 @@ http://www.madore.org/~david/linux/iTCO-wdt-test.html
 
 ####  Docker breaks existing bridge I use for KVM/QEMU
 
+How to Force Docker to release storage space after manual delete of file in volumes and containers? https://stackoverflow.com/questions/44288901/how-to-force-docker-to-release-storage-space-after-manual-delete-of-file-in-volu
+
+Docker-compose: must disable firewall and restart docker service when docker-compuse up: https://stackoverflow.com/questions/60554679/docker-compose-must-disable-firewall-and-restart-docker-service-when-docker-com
+
+
 When I start the Docker service, my VM no longer has network connectivity ([https://bbs.archlinux.org/viewtopic.php?id=233727](https://bbs.archlinux.org/viewtopic.php?id=233727)).
 
 1. Cal activar el service de iptables:  `sudo systemctl start iptables`.
@@ -52,6 +57,10 @@ When I start the Docker service, my VM no longer has network connectivity ([http
 
 And it works!
 
+### Iptables
+
+How to verify if iptables is running or the firewall is activated: https://superuser.com/questions/1124317/how-to-verify-if-iptables-is-running-or-the-firewall-is-activated
+
 ### ReactOS
 
 * [ReactOS on QEMU](https://reactos.org/wiki/QEMU)
@@ -63,3 +72,7 @@ And it works!
 * [Windows LTSC | The Best Version of Windows 10](https://www.youtube.com/watch?v=8dyhoh7u8JA)
 * [Introducing Tiny 10!](https://www.reddit.com/r/windows/comments/ml538t/introducing_tiny_10/)
 * [Windows10Debloater](https://github.com/Sycnex/Windows10Debloater): Script/Utility/Application to debloat Windows 10, to remove Windows pre-installed unnecessary applications, stop some telemetry functions, stop Cortana from being used as your Search Index, disable unnecessary scheduled tasks, and more...
+- [ReviOS](https://www.revi.cc/)
+- [Windows Disc Image Repository](https://isofiles.bd581e55.workers.dev/)
+- [Windows10 LTSC 2021 Download link. (Updated)](https://www.reddit.com/r/Windows10LTSC/comments/qw06gr/windows10_ltsc_2021_download_link_updated/)
+-
