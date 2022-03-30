@@ -39,6 +39,7 @@ Everytime I reboot my computer, I got this message when I do a docker-compose up
 
  docker-compose up fails if network attached to container is removed #5745: https://github.com/docker/compose/issues/5745
 
- Solved:
+Solved:
 
-sudo  iptables -N DOCKER
+sudo iptables -N DOCKER
+sudo iptables -N DOCKER-ISOLATION-STAGE-1
