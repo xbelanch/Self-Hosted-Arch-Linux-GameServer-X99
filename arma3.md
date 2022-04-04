@@ -85,3 +85,24 @@ docker exec -it a3co10escape /bin/bash
 ```
 
 Cal editar els fitxers de configuració, però això ja cal continuar amb el que demana els tutorials de Bohemia :)
+
+
+## Rcon setup
+
+L'rcon serà l'utilitat que ens permetrà enviar missatges als players. Això és realment útil de cara a avisar que hi ha un reinici del servidor.
+
+Va resultar ser un pain fer la configuració, però finalment ja funciona:
+
+Cal crear dins del directory serverfiles/battleye/launch l'arxiu beserver_x64.cfg on cal incloure:
+
+RConPassword enterYourPasswordHere
+RConPort 2301 (-1 i TCP, és a dir, si els ports són 2302-2306 UDP, afegim el 2301, però no l'obrim a l'exterior)
+
+Més info: https://community.bistudio.com/wiki/Multiplayer_Server_Commands
+
+Cal dir que, ara per ara, només m'ha funcionat amb aquests clients:
+
+* https://www.battleye.com/downloads/
+* https://battlewarden.net/
+
+i no funciona amb cap altre client rcon "genèric"
