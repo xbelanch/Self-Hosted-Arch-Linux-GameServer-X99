@@ -10,7 +10,14 @@
 This machine hosts:
 
 * [Rust Legacy](https://d3adwolf.github.io/rustlegacy/index-english.html)
-* [Project Zomboid]
+
+<!-- * [Project Zomboid] -->
+
+### General
+
+- [Which operating system should I use for a game server?](https://www.reddit.com/r/selfhosted/comments/qzgfco/which_operating_system_should_i_use_for_a_game/)
+- [Hosting game servers from home, all one one OS or multiple VM's?](https://www.reddit.com/r/HomeServer/comments/ou4pyt/hosting_game_servers_from_home_all_one_one_os_or/)
+- [What are good OS that can host gaming servers that isn’t just lines of code?](https://www.reddit.com/r/homelab/comments/8xszvf/what_are_good_os_that_can_host_gaming_servers/)
 
 ## X99 Chinese Motherboards
 
@@ -75,4 +82,3 @@ How to verify if iptables is running or the firewall is activated: https://super
 - [ReviOS](https://www.revi.cc/)
 - [Windows Disc Image Repository](https://isofiles.bd581e55.workers.dev/)
 - [Windows10 LTSC 2021 Download link. (Updated)](https://www.reddit.com/r/Windows10LTSC/comments/qw06gr/windows10_ltsc_2021_download_link_updated/)
--
