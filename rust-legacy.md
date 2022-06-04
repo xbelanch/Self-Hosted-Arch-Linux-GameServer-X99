@@ -210,13 +210,37 @@ sudo umount mnt
 sudo qemu-nbd --disconnect /dev/nbd0
 ```
 
-## Need to test if this works...
+## QEMU Port forwarding
 
 [How To Connect QEMU Host-Guest Networks Made Easy ](https://www.ubuntubuzz.com/2021/12/how-to-connect-qemu-host-guest-networks-made-easy.html)
 
-Dit d'una altra manera, és possible establir un redireccionament udp d'un port a un altre sense fer servir el bridge?
+Dit d'una altra manera, és possible establir un redireccionament udp d'un port a un altre sense fer servir el bridge? Sí! ([QEMU multiple port forwarding](https://serverfault.com/questions/704294/qemu-multiple-port-forwarding)):
 
-O un altre opció: [quickhowto: qemu networking using vde, tun/tap, and bridge](https://selamatpagicikgu.wordpress.com/2011/06/08/quickhowto-qemu-networking-using-vde-tuntap-and-bridge/)
+``` shell
+#!/bin/sh
+
+QEMU_SYSTEM_X86_64=qemu-system-x86_64
+QEMU_FLAGS="-cpu host -enable-kvm -boot order=c -usbdevice tablet -device VGA,vgamem_mb=256"
+QEMU_DRIVE="-drive if=ide,index=0,media=disk,file="
+QEMU_VNC_DISPLAY="-vnc :1"
+QEMU_SMP=2
+QEMU_MEMORY="1G"
+QEMU_NET="-net nic,model=rtl8139"
+QEMU_NET_PORT="-net user,hostfwd=udp::29015-:29015,hostfwd=tcp::29016-:29016"
+
+if [ $# -lt 2 ]; then
+    echo "Usage: ./run.sh <disk.qcow2> <name>"
+    echo "ERROR: nor path to image and name is provided"
+    exit 1
+fi
+
+set -e
+
+$QEMU_SYSTEM_X86_64 $QEMU_FLAGS -m $QEMU_MEMORY -smp $QEMU_SMP $QEMU_DRIVE$1 -name $2 $QEMU_VNC_DISPLAY $QEMU_NET $QEMU_NET_PORT
+```
+D'aquesta manera, la màquina de windows queda amagada en el host i només és accessible a través dels ports del joc (29015-29016). Testejat i funciona perfectament (joc i rcon).
+
+L'altra opció, per tant, quedaria descartada: [quickhowto: qemu networking using vde, tun/tap, and bridge](https://selamatpagicikgu.wordpress.com/2011/06/08/quickhowto-qemu-networking-using-vde-tuntap-and-bridge/)
 
 ## Console commands
 
