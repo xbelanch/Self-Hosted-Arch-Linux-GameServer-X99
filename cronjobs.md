@@ -1,4 +1,4 @@
-# Cronjobs
+# Cronjobs [DEPRECATED! Check out systemctl timers instead]
 
 References:
 
