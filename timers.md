@@ -77,6 +77,10 @@ Tue 2022-06-28 11:30:00 CEST 3h 2min left Tue 2022-06-28 08:00:10 CEST 27min ago
 1 timers listed.
 ```
 
+Use `systemctl --user list-units --type=target` to list the targets for the user systemd.
+
+Also, be sure to run `loginctl enable-linger USERNAME`, otherwise the services with will be started on user login instead of boot.
+
 ## References
 
 - [systemd/Timers](https://wiki.archlinux.org/title/Systemd/Timers)
@@ -85,3 +89,5 @@ Tue 2022-06-28 11:30:00 CEST 3h 2min left Tue 2022-06-28 08:00:10 CEST 27min ago
 - [[Solved] systemd timers do not auto start as user services](https://bbs.archlinux.org/viewtopic.php?id=213968)
 - [Systemd timer scheduled for first start without manually starting or rebooting the server](https://stackoverflow.com/questions/70348320/systemd-timer-scheduled-for-first-start-without-manually-starting-or-rebooting-t)
 - [Systemd: how to start service after another service started](https://serverfault.com/questions/1053369/systemd-how-to-start-service-after-another-service-startedurl)
+- [Why doesn't my systemd user unit start at boot?](https://unix.stackexchange.com/questions/251211/why-doesnt-my-systemd-user-unit-start-at-boot)
+- [loginctl enable-linger/disable-linger ... but reading linger-status?](https://serverfault.com/questions/846441/loginctl-enable-linger-disable-linger-but-reading-linger-status)
